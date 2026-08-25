@@ -1,0 +1,126 @@
+---
+const journeys = [
+  {
+    no: "01",
+    title: "Golden Land Classic",
+    route: "Yangon → Bagan → Mandalay → Inle Lake",
+    days: "9 days",
+    price: "US$1,480",
+    tag: "Most booked",
+    seed: "bagan-balloons",
+  },
+  {
+    no: "02",
+    title: "Shan Highlands Trek",
+    route: "Kalaw → Pindaya → Inle Lake",
+    days: "6 days",
+    price: "US$960",
+    tag: "Easy–moderate walking",
+    seed: "shan-child",
+  },
+  {
+    no: "03",
+    title: "Lost Kingdoms of Arakan",
+    route: "Sittwe → riverboat → Mrauk U",
+    days: "5 days",
+    price: "US$1,150",
+    tag: "Off the grid",
+    seed: "ox-cart",
+  },
+  {
+    no: "04",
+    title: "The Quiet South",
+    route: "Yangon → Golden Rock → Hpa-An",
+    days: "5 days",
+    price: "US$890",
+    tag: "New for 2026",
+    seed: "bagan-women",
+  },
+  {
+    no: "05",
+    title: "Ngapali Wind-Down",
+    route: "Ngapali Beach · Thandwe",
+    days: "4 days",
+    price: "US$620",
+    tag: "Beach extension",
+    seed: "bagan-sunset",
+  },
+];
+---
+
+<section id="journeys" class="bg-lacquer">
+  <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="font-mono text-xs tracking-[0.24em] text-gold uppercase">
+          Signature journeys
+        </p>
+        <h2 class="mt-5 font-display text-4xl tracking-wide text-bone sm:text-5xl">
+          Five routes we know by heart
+        </h2>
+      </div>
+      <p class="max-w-sm text-sm leading-relaxed text-bone/70">
+        Every itinerary is a starting point, not a contract. Tell us where
+        your interests lie and we redraw the map — most guests change at
+        least a third of the plan.
+      </p>
+    </div>
+
+    <div data-reveal style="--reveal-delay: 120ms" class="mt-14">
+      {
+        journeys.map((trip) => (
+          <a
+            href="#plan"
+            class="group relative grid grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-1 border-t border-bone/15 px-2 py-7 transition-colors last:border-b hover:bg-panel focus-visible:bg-panel sm:grid-cols-[3rem_1fr_auto_6.5rem_2rem] sm:px-4"
+          >
+            <span class="tnum hidden font-mono text-xs text-gold sm:block">{trip.no}</span>
+            <span>
+              <span class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                <span class="font-display text-xl tracking-wide text-bone transition-colors group-hover:text-gold sm:text-2xl">
+                  {trip.title}
+                </span>
+                <span class="border border-cinnabar/70 bg-cinnabar/15 px-2 py-0.5 font-mono text-[9px] tracking-[0.18em] text-gold-soft uppercase">
+                  {trip.tag}
+                </span>
+              </span>
+              <span class="mt-1 block font-mono text-xs tracking-wider text-bone/60">
+                {trip.route}
+              </span>
+              <img
+                src={`/images/${trip.seed}.jpg`}
+                alt=""
+                width="420"
+                height="280"
+                loading="lazy"
+                aria-hidden="true"
+                class="pointer-events-none absolute top-1/2 right-28 z-10 hidden w-44 -translate-y-1/2 rotate-3 border-4 border-bone object-cover opacity-0 shadow-xl transition-[opacity,transform] duration-500 group-hover:rotate-1 group-hover:opacity-100 lg:block"
+              />
+            </span>
+            <span class="text-right font-mono text-xs tracking-wider text-bone/60 sm:text-left">
+              {trip.days}
+            </span>
+            <span class="tnum col-start-1 row-start-2 font-mono text-sm font-medium text-bone sm:col-auto sm:row-auto sm:text-right">
+              from {trip.price}
+            </span>
+            <span
+              class="absolute right-2 hidden text-lg text-gold transition-transform duration-300 group-hover:translate-x-1.5 sm:block"
+              aria-hidden="true"
+            >
+              →
+            </span>
+            <span class="sr-only">Enquire about {trip.title}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <p
+      data-reveal
+      class="tnum mt-6 max-w-2xl font-mono text-[11px] leading-relaxed tracking-wide text-bone/55"
+    >
+      Prices per person, twin share, with domestic flights included where
+      marked. A 20% deposit secures your dates; the balance is settled in
+      Yangon.
+    </p>
+  </div>
+</section>

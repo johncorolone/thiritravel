@@ -1,0 +1,31 @@
+---
+const places = [
+  "Bagan",
+  "Inle Lake",
+  "Mandalay",
+  "Mount Popa",
+  "Kyaiktiyo",
+  "Hpa-An",
+  "Mrauk U",
+  "Ngapali",
+  "Pyin Oo Lwin",
+];
+
+const strip = places.map((place) => `${place} ✦`);
+---
+
+<div class="overflow-hidden border-y border-lacquer/40 bg-gold py-3.5" aria-hidden="true">
+  <div class="animate-marquee flex w-max items-center">
+    {
+      [0, 1].map(() => (
+        <span class="flex shrink-0 items-center">
+          {strip.map((item) => (
+            <span class="mx-6 font-mono text-sm tracking-[0.3em] whitespace-nowrap text-lacquer uppercase">
+              {item}
+            </span>
+          ))}
+        </span>
+      ))
+    }
+  </div>
+</div>

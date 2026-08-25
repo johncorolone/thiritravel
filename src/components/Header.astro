@@ -1,0 +1,103 @@
+---
+const links = [
+  { href: "#destinations", label: "Destinations" },
+  { href: "#journeys", label: "Journeys" },
+  { href: "#story", label: "Our story" },
+  { href: "#practical", label: "Good to know" },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300"
+>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex h-[72px] items-center justify-between gap-6">
+      <a href="#top" class="flex items-center gap-3">
+        <span
+          class="grid size-9 place-items-center bg-gold font-myanmar text-lg leading-none text-lacquer"
+          translate="no"
+        >
+          သီရိ
+        </span>
+        <span class="leading-tight" translate="no">
+          <span class="block font-display text-lg tracking-wide text-bone"
+            >Thiri Travel Co.</span
+          >
+          <span
+            class="block font-mono text-[10px] tracking-[0.28em] text-gold uppercase"
+            >Yangon · Est. 2009</span
+          >
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-8 lg:flex" aria-label="Main">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="font-mono text-xs tracking-[0.18em] text-bone/70 uppercase underline-offset-4 transition-colors hover:text-gold hover:underline"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="hidden items-center gap-6 lg:flex">
+        <a
+          href="tel:+959770114253"
+          class="tnum font-mono text-xs tracking-wider text-bone/70 transition-colors hover:text-gold"
+          >+95&nbsp;9&nbsp;770&nbsp;114&nbsp;253</a
+        >
+        <a
+          href="#plan"
+          class="border border-gold bg-gold px-5 py-2.5 font-mono text-xs tracking-[0.14em] text-lacquer transition-colors hover:bg-gold-soft hover:border-gold-soft"
+        >
+          Plan a journey
+        </a>
+      </div>
+
+      <button
+        id="menu-toggle"
+        class="flex size-11 flex-col items-center justify-center gap-1.5 lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Toggle menu"
+      >
+        <span class="h-px w-6 bg-bone"></span>
+        <span class="h-px w-6 bg-bone"></span>
+        <span class="h-px w-4 self-end bg-gold"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav
+    id="mobile-nav"
+    class="hidden overscroll-contain border-y border-gold/20 bg-lacquer/95 px-6 py-6 backdrop-blur-md lg:hidden"
+    aria-label="Mobile"
+  >
+    <ul class="space-y-4">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="font-display text-2xl tracking-wide text-bone hover:text-gold"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-2">
+        <a
+          href="#plan"
+          class="inline-block border border-gold bg-gold px-6 py-3 font-mono text-xs tracking-[0.14em] text-lacquer uppercase"
+        >
+          Plan a journey
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

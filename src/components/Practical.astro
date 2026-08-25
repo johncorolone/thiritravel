@@ -1,0 +1,101 @@
+---
+const faqs = [
+  {
+    q: "Do I need a visa?",
+    a: "Most visitors apply online for a tourist eVisa (US$50, usually approved within three business days). After booking we send step-by-step instructions with screenshots — it takes most guests ten minutes.",
+  },
+  {
+    q: "When is the best time to visit?",
+    a: "October to March: cool mornings and dry roads, and the season for everything from balloon season in Bagan to full water levels on Inle. April–May is fiercely hot; June–September brings the southwest monsoon — dramatic skies for photographers, but Ngapali beach hotels close.",
+  },
+  {
+    q: "How do payments work?",
+    a: "A 20% deposit by bank transfer or card confirms your dates. The balance is settled on arrival — cash US dollars (crisp bills printed after 2006) or card at our Yangon office. Kyat rates move daily, so we always quote in dollars.",
+  },
+  {
+    q: "Can you customise an itinerary?",
+    a: "Always. Treat our five signature journeys as sketches. We routinely add cooking classes in a Mandalay home, extra nights for photographers, or a slow boat instead of a short flight. Most guests change at least a third of the plan before deposit.",
+  },
+  {
+    q: "Is travel in Myanmar responsible as well as safe?",
+    a: "We follow Ministry of Hotels & Tourism advisories on which regions are open, cap groups at twelve, hire guides from the communities you visit, and put every guest's eVisa fee question to bed before they land. If an area isn't right to visit yet, we'll tell you plainly.",
+  },
+];
+
+const glance = [
+  { term: "Currency", detail: "Kyat (MMK) · USD widely accepted" },
+  { term: "Best season", detail: "October – March" },
+  { term: "Time zone", detail: "GMT+6:30 (yes, half past)" },
+  { term: "Plugs", detail: "230V · types A, C, G, I — bring an adapter" },
+  { term: "Visa", detail: "Tourist eVisa · US$50 · ~3 days" },
+];
+---
+
+<section id="practical" class="bg-lacquer">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:py-32">
+    <div class="lg:col-span-7">
+      <p
+        data-reveal
+        class="font-mono text-xs tracking-[0.24em] text-gold uppercase"
+      >
+        Good to know
+      </p>
+      <h2
+        data-reveal
+        style="--reveal-delay: 80ms"
+        class="mt-5 font-display text-4xl tracking-wide text-bone sm:text-5xl"
+      >
+        The questions every guest asks
+      </h2>
+
+      <div data-reveal style="--reveal-delay: 140ms" class="mt-10">
+        {
+          faqs.map((faq) => (
+            <details class="group border-b border-bone/15">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 transition-colors hover:text-gold [&::-webkit-details-marker]:hidden">
+                <span class="font-display text-lg tracking-wide sm:text-xl">
+                  {faq.q}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="font-mono text-xl leading-none text-gold transition-transform duration-300 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p class="max-w-2xl pb-6 text-sm leading-relaxed text-bone/75">
+                {faq.a}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <aside data-reveal style="--reveal-delay: 200ms" class="lg:col-span-4 lg:col-start-9">
+      <div class="border border-gold/60 bg-panel shadow-[10px_10px_0_0_rgba(217,164,65,0.18)]">
+        <h3
+          class="border-b border-gold/40 px-6 py-4 font-mono text-xs tracking-[0.2em] text-gold uppercase"
+        >
+          Myanmar at a glance
+        </h3>
+        <dl class="divide-y divide-bone/10">
+          {
+            glance.map((row) => (
+              <div class="flex items-baseline justify-between gap-4 px-6 py-3.5">
+                <dt class="font-mono text-[11px] tracking-[0.14em] text-gold/80 uppercase">
+                  {row.term}
+                </dt>
+                <dd class="text-right text-sm text-bone">{row.detail}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="border-t border-gold/30 bg-cinnabar/15 px-6 py-4 text-xs leading-relaxed text-bone/80">
+          Still unsure? Write to us — a person named either Khin Myo or Zaw
+          will answer within one working day.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>

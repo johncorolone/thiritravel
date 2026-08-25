@@ -1,0 +1,84 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Thiri Travel Co. — Boutique journeys through Myanmar",
+  description = "Family-run tour operator in Yangon since 2009. Private and small-group journeys through Bagan, Inle Lake, Mandalay, Mrauk U and beyond.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="color-scheme-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#171110" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Marcellus&family=Noto+Sans+Myanmar:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="grain">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-gold focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-lacquer"
+    >
+      Skip to content
+    </a>
+    <slot />
+    <script>
+      const header = document.getElementById("site-header");
+      const onScroll = () => {
+        if (!header) return;
+        const scrolled = window.scrollY > 24;
+        header.classList.toggle("bg-lacquer/85", scrolled);
+        header.classList.toggle("backdrop-blur-md", scrolled);
+        header.classList.toggle("border-b", scrolled);
+        header.classList.toggle("border-gold/20", scrolled);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      const toggle = document.getElementById("menu-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      toggle?.addEventListener("click", () => {
+        const open = mobileNav?.classList.toggle("hidden") === false;
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      mobileNav
+        ?.querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => mobileNav.classList.add("hidden")),
+        );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      );
+      document
+        .querySelectorAll("[data-reveal]")
+        .forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

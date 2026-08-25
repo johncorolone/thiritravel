@@ -1,0 +1,183 @@
+---
+const places = [
+  {
+    name: "Bagan",
+    burmese: "ပုဂံ",
+    region: "Mandalay Region",
+    img: "/images/bagan-balloons.jpg",
+    alt: "Balloons drifting over the misty temple plain of Bagan at dawn",
+    blurb:
+      "More than 2,200 temples rise from a dusty bend of the Ayeyarwady. We go at first light, by e-bike, before the balloons do.",
+    feature: true,
+    tall: false,
+  },
+  {
+    name: "Inle Lake",
+    burmese: "အင်းလေးကန်",
+    region: "Shan State",
+    img: "/images/inle-fisherman.jpg",
+    alt: "An Intha fisherman leg-rowing across a calm Inle Lake",
+    blurb:
+      "Stilt villages, floating tomato gardens and Intha leg-rowers. Two nights minimum — the lake deserves a slow morning.",
+    feature: true,
+    tall: true,
+  },
+  {
+    name: "Twante",
+    burmese: "တွံတေး",
+    region: "Yangon Region",
+    img: "/images/twante-kiln.jpg",
+    alt: "Glazed pots stacked inside a glowing brick kiln in Twante",
+    blurb:
+      "A canal-boat ride from Yangon, Twante has fired earthenware in the same brick kilns for two hundred years. An easy first day out of the city.",
+    feature: true,
+    tall: false,
+  },
+  {
+    name: "Mandalay",
+    burmese: "မန္တလေး",
+    region: "Mandalay Region",
+    img: "/images/ox-cart.jpg",
+    alt: "An ox-cart kicking up dust on a rural road outside Mandalay",
+    blurb:
+      "The last royal capital — marble-carving rows, gilded teak monasteries, and the U Bein crossing at dusk.",
+  },
+  {
+    name: "Kyaiktiyo",
+    burmese: "ကျိုက်ထီးရိုး",
+    region: "Mon State",
+    img: "/images/bagan-sunset.jpg",
+    alt: "Golden evening light over hilltop stupas and hazy ridgelines",
+    blurb:
+      "The Golden Rock balancing above a sea of cloud — reached by pilgrim train and a shared truck ride you won't forget.",
+  },
+  {
+    name: "Hpa-An",
+    burmese: "ဘားအံ",
+    region: "Kayin State",
+    img: "/images/shan-child.jpg",
+    alt: "A smiling child in a village lane in the hills of eastern Myanmar",
+    blurb:
+      "Limestone karsts, cave monasteries and rice-paddy cycling in the quiet south. Still blissfully uncrowded.",
+  },
+  {
+    name: "Mrauk U",
+    burmese: "မြောက်ဦး",
+    region: "Rakhine State",
+    img: "/images/bagan-women.jpg",
+    alt: "Two women resting with their basket yokes among misty ancient ruins",
+    blurb:
+      "The lost Arakanese kingdom, upriver from Sittwe by slow boat — temples wrapped in morning mist and goat paths.",
+  },
+  {
+    name: "Ngapali",
+    burmese: "ငပလီ",
+    region: "Rakhine Coast",
+    img: "/images/inle-fisherman.jpg",
+    alt: "A lone boat on wide calm water beneath towering monsoon clouds",
+    blurb:
+      "Seven miles of palm-lined sand and grilled fish straight off the boat. We end most itineraries here.",
+  },
+];
+
+const features = places.filter((place) => place.feature);
+const rest = places.filter((place) => !place.feature);
+---
+
+<section id="destinations" class="bg-parchment text-lacquer">
+  <div class="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="font-mono text-xs tracking-[0.24em] text-cinnabar uppercase">
+          Where we go
+        </p>
+        <h2
+          class="mt-5 font-display text-4xl tracking-wide sm:text-5xl"
+        >
+          Places worth the flight
+        </h2>
+      </div>
+      <p class="max-w-sm text-sm leading-relaxed text-lacquer/70">
+        Myanmar rewards travellers who give it time. These are the places our
+        own staff send their visiting relatives — nothing on this list is
+        there for the brochure.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      {
+        features.map((place, i) => (
+          <article
+            data-reveal
+            style={`--reveal-delay: ${i * 90}ms`}
+            class="group relative overflow-hidden border border-lacquer/20 bg-lacquer"
+          >
+            <img
+              src={place.img}
+              alt={place.alt}
+              width="640"
+              height="427"
+              loading="lazy"
+              class={`w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] ${place.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}
+            />
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-lacquer via-lacquer/40 to-transparent p-6 pt-16">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="font-display text-2xl text-bone">{place.name}</h3>
+                <span class="font-myanmar text-sm text-gold">{place.burmese}</span>
+              </div>
+              <p class="mt-1 font-mono text-[10px] tracking-[0.2em] text-gold uppercase">
+                {place.region}
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-bone/85">
+                {place.blurb}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+      {
+        rest.map((place, i) => (
+          <article
+            data-reveal
+            style={`--reveal-delay: ${i * 70}ms`}
+            class="group flex flex-col border border-lacquer/20 bg-parchment"
+          >
+            <div class="overflow-hidden">
+              <img
+                src={place.img}
+                alt={place.alt}
+                width="640"
+                height="427"
+                loading="lazy"
+                class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex min-w-0 items-baseline justify-between gap-3">
+                <h3 class="font-display text-xl tracking-wide">{place.name}</h3>
+                <span class="font-myanmar text-xs text-cinnabar">{place.burmese}</span>
+              </div>
+              <p class="mt-0.5 font-mono text-[10px] tracking-[0.2em] text-cinnabar uppercase">
+                {place.region}
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-lacquer/75">
+                {place.blurb}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p
+      data-reveal
+      class="mt-10 border-t border-lacquer/15 pt-6 font-mono text-[11px] tracking-wide text-lacquer/60"
+    >
+      Plus Pyin Oo Lwin's hill-station gardens, the Shan tea roads and
+      anywhere else you fancy — every route is drawn from scratch.
+    </p>
+  </div>
+</section>

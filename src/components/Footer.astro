@@ -1,0 +1,114 @@
+---
+const year = new Date().getFullYear();
+
+const menu = [
+  { href: "#destinations", label: "Destinations" },
+  { href: "#journeys", label: "Journeys" },
+  { href: "#story", label: "Our story" },
+  { href: "#practical", label: "Good to know" },
+];
+
+const trips = [
+  "Golden Land Classic — 9 days",
+  "Shan Highlands Trek — 6 days",
+  "Lost Kingdoms of Arakan — 5 days",
+  "The Quiet South — 5 days",
+  "Ngapali Wind-Down — 4 days",
+];
+---
+
+<footer class="bg-coal">
+  <div class="frieze mx-auto max-w-7xl opacity-80" aria-hidden="true"></div>
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-8 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <a href="#top" class="flex items-center gap-3">
+          <span
+            class="grid size-9 place-items-center bg-gold font-myanmar text-lg leading-none text-lacquer"
+            translate="no"
+          >
+            သီရိ
+          </span>
+          <span class="font-display text-xl tracking-wide text-bone" translate="no">
+            Thiri Travel Co.
+          </span>
+        </a>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed text-bone/65">
+          A family-run tour operator in Yangon. We've spent seventeen years
+          learning which temple is quietest at dawn and which tea shop makes
+          the best laphet yay — and we'd like to show you both.
+        </p>
+        <p class="mt-6 font-myanmar text-lg text-gold">မင်္ဂလာပါ ကြိုဆိုပါသည်</p>
+      </div>
+
+      <nav class="lg:col-span-2" aria-label="Footer">
+        <h3 class="font-mono text-[10px] tracking-[0.24em] text-gold/70 uppercase">
+          Menu
+        </h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            menu.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-bone/75 transition-colors hover:text-gold">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="lg:col-span-2">
+        <h3 class="font-mono text-[10px] tracking-[0.24em] text-gold/70 uppercase">
+          Journeys
+        </h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            trips.map((trip) => (
+              <li>
+                <a href="#journeys" class="text-sm text-bone/75 transition-colors hover:text-gold">
+                  {trip}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <address class="not-italic lg:col-span-3">
+        <h3 class="font-mono text-[10px] tracking-[0.24em] text-gold/70 uppercase">
+          The office
+        </h3>
+        <p class="mt-4 text-sm leading-relaxed text-bone/75">
+          No. 214, 3rd Floor,<br />
+          Bo Aung Kyaw Street, Botahtaung Township,<br />
+          Yangon, Myanmar
+        </p>
+        <p class="mt-4 text-sm">
+          <a href="mailto:hello@thiritravel.co.mm" class="block text-bone/75 transition-colors hover:text-gold">
+            hello@thiritravel.co.mm
+          </a>
+          <a href="tel:+959770114253" class="tnum block text-bone/75 transition-colors hover:text-gold">
+            +95&nbsp;9&nbsp;770&nbsp;114&nbsp;253
+          </a>
+        </p>
+        <p class="tnum mt-4 font-mono text-xs leading-relaxed text-bone/50">
+          Mon–Fri 09:00–17:30 · Sat 09:00–13:00<br />
+          Closed public holidays (we're probably travelling)
+        </p>
+      </address>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-bone/15 pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="tnum font-mono text-[11px] tracking-wider text-bone/45">
+        © {year} Thiri Travel Co. Ltd · Licence N.LT 0147, Ministry of Hotels &amp;
+        Tourism · Member, UMTA
+      </p>
+      <p class="font-mono text-[11px] tracking-wider text-bone/45">
+        Made in Yangon, with too much tea
+      </p>
+    </div>
+  </div>
+</footer>
